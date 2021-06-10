@@ -1,7 +1,16 @@
 import { config } from '@keystone-next/keystone/schema';
 import { statelessSessions } from '@keystone-next/keystone/session';
-import { lists } from './schema';
 import { createAuth } from '@keystone-next/auth';
+
+import { lists } from './schema';
+
+const dbUrl =
+  process.env.DATABASE_URL ||
+  `postgres://${process.env.USER}@localhost/keystone-todo-project`;
+
+const sessionSecret =
+  process.env.SESSION_SECERT ||
+  'iLqbHhm7qwiBNc8KgL4NQ8tD8fFVhNhNqZ2nRdprgnKNjgJHgvitWx6DPoZJpYHa';
 
 const auth = createAuth({
   identityField: 'email',
@@ -17,16 +26,14 @@ const auth = createAuth({
 export default auth.withAuth(
   config({
     db: {
-      url:
-        process.env.DATABASE_URL ||
-        `postgres://${process.env.USER}@localhost/keystone-todo-project`,
+      url: dbUrl,
       provider: 'postgresql',
       useMigrations: true,
     },
     ui: { isAccessAllowed: ({ session }) => !!session?.data?.isAdmin },
     lists,
     session: statelessSessions({
-      secret: 'sadjnfsdhajfjiasdkjnasfnhqwiudwdnhiqwiufnwerihvbwhi',
+      secret: sessionSecret,
     }),
   })
 );
