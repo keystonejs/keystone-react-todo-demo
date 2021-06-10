@@ -110,6 +110,7 @@ type User {
   name: String
   email: String
   password_is_set: Boolean
+  isAdmin: Boolean
   todos(
     where: TodoWhereInput! = {}
     search: String
@@ -182,6 +183,8 @@ input UserWhereInput {
   email_in: [String]
   email_not_in: [String]
   password_is_set: Boolean
+  isAdmin: Boolean
+  isAdmin_not: Boolean
 
   """
    condition must be true for all nodes
@@ -210,18 +213,22 @@ enum SortUsersBy {
   name_DESC
   email_ASC
   email_DESC
+  isAdmin_ASC
+  isAdmin_DESC
 }
 
 input UserOrderByInput {
   id: OrderDirection
   name: OrderDirection
   email: OrderDirection
+  isAdmin: OrderDirection
 }
 
 input UserUpdateInput {
   name: String
   email: String
   password: String
+  isAdmin: Boolean
   todos: TodoRelateToManyInput
 }
 
@@ -234,6 +241,7 @@ input UserCreateInput {
   name: String
   email: String
   password: String
+  isAdmin: Boolean
   todos: TodoRelateToManyInput
 }
 

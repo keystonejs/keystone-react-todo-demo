@@ -19,9 +19,10 @@ model Todo {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
+  id       Int      @id @default(autoincrement())
   name     String?
-  email    String? @unique
+  email    String?  @unique
   password String?
-  todos    Todo[]  @relation("TodoassignedTo")
+  isAdmin  Boolean?
+  todos    Todo[]   @relation("TodoassignedTo")
 }

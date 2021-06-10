@@ -14,6 +14,7 @@ export const lists = createSchema({
       name: text(),
       email: text({ isUnique: true, isRequired: true }),
       password: password(),
+      isAdmin: checkbox(),
       todos: relationship({ ref: 'Todo.assignedTo', many: true }),
     },
   }),
