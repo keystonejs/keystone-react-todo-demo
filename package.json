@@ -9,7 +9,7 @@
     "site:start": "next start -p 8000",
     "api:dev": "keystone-next dev",
     "start": "keystone-next start",
-    "build": "keystone-next prisma migrate deploy keystone-next build"
+    "build": "keystone-next prisma migrate deploy && keystone-next build"
   },
   "dependencies": {
     "@keystone-next/auth": "26.0.0",
