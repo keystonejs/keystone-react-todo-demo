@@ -2,11 +2,12 @@ import classNames from 'classnames';
 import { useRouter } from 'next/router';
 import React, { Fragment, useEffect, useState } from 'react';
 import { gql, useQuery, useMutation } from 'urql';
-import { Checkbox, Select } from '../components/forms';
+import { Checkbox, Select } from '../components/ui/forms';
 
-import { Container } from '../components/layout';
-import { H1 } from '../components/typography';
-import { Button, TextInput } from '../components/forms';
+import { Button, DeleteButton } from '../components/ui/controls';
+import { Container } from '../components/ui/layout';
+import { H1 } from '../components/ui/typography';
+import { TextInput } from '../components/ui/forms';
 
 export default function Home() {
   const [showComplete, setShowComplete] = useState(true);
@@ -129,7 +130,7 @@ function NewTodo({ users }: { users: User[] }) {
   const [label, setLabel] = useState('');
   const [assignee, setAssignee] = useState('');
   return (
-    <li>
+    <li className="mt-4 pt-3 border-t border-gray-200">
       <form
         onSubmit={event => {
           event.preventDefault();
@@ -152,7 +153,7 @@ function NewTodo({ users }: { users: User[] }) {
         <TextInput value={label} onChange={e => setLabel(e.target.value)} />
         <Select
           className="ml-2"
-          value=""
+          value={assignee}
           onChange={event => {
             setAssignee(event.target.value);
           }}
@@ -164,7 +165,7 @@ function NewTodo({ users }: { users: User[] }) {
             </option>
           ))}
         </Select>
-        <Button type="submit" className="ml-2">
+        <Button type="submit" appearance="primary" className="ml-2">
           Add
         </Button>
       </form>
@@ -189,10 +190,10 @@ function Todo({ todo, users }: { todo: Todo; users: User[] }) {
       }
     }
   `);
-  const labelClass = classNames({ 'text-gray-500': todo.isComplete });
+
   return (
     <li>
-      <label className={labelClass}>
+      <label className={classNames({ 'text-gray-500': todo.isComplete })}>
         <Checkbox
           className="mr-2"
           checked={todo.isComplete || false}
@@ -224,28 +225,11 @@ function Todo({ todo, users }: { todo: Todo; users: User[] }) {
           </option>
         ))}
       </Select>
-      <button
+      <DeleteButton
         onClick={() => {
           deleteTodo({ id: todo.id });
         }}
-        className="w-4 h-4 text-gray-400 hover:text-red-600 mx-2 inline-block"
-        title="Delete"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-4 w-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-          />
-        </svg>
-      </button>
+      />
     </li>
   );
 }

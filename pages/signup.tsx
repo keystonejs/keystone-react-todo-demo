@@ -1,16 +1,12 @@
 import { useState } from 'react';
 import { gql, useMutation } from 'urql';
 
-import { Container } from '../components/layout';
-import { H1 } from '../components/typography';
-import {
-  Button,
-  FieldContainer,
-  FieldLabel,
-  TextInput,
-} from '../components/forms';
+import { Button } from '../components/ui/controls';
+import { Container } from '../components/ui/layout';
+import { H1 } from '../components/ui/typography';
+import { FieldContainer, FieldLabel, TextInput } from '../components/ui/forms';
 import { useRouter } from 'next/router';
-import { Link } from '../components/link';
+import { Link } from '../components/ui/link';
 
 export default function SigninPage() {
   const [{ error, data }, signup] = useMutation(gql`
@@ -32,7 +28,7 @@ export default function SigninPage() {
 
   return (
     <Container>
-      <H1>Sign in</H1>
+      <H1>Sign up</H1>
       <form
         onSubmit={event => {
           event.preventDefault();
@@ -47,6 +43,7 @@ export default function SigninPage() {
         <FieldContainer>
           <FieldLabel>Name</FieldLabel>
           <TextInput
+            size="large"
             onChange={event => {
               setName(event.target.value);
             }}
@@ -55,6 +52,7 @@ export default function SigninPage() {
         <FieldContainer>
           <FieldLabel>Email address</FieldLabel>
           <TextInput
+            size="large"
             onChange={event => {
               setEmail(event.target.value);
             }}
@@ -63,13 +61,16 @@ export default function SigninPage() {
         <FieldContainer>
           <FieldLabel>Password</FieldLabel>
           <TextInput
+            size="large"
             type="password"
             onChange={event => {
               setPassword(event.target.value);
             }}
           />
         </FieldContainer>
-        <Button type="submit">Sign In</Button>
+        <Button type="submit" size="large" appearance="primary">
+          Sign In
+        </Button>
       </form>
       <hr className="my-4" />
       <div>

@@ -1,7 +1,6 @@
 import 'tailwindcss/tailwind.css';
 import type { AppProps } from 'next/app';
 import { createClient, Provider } from 'urql';
-import { useQuery, gql } from 'urql';
 
 const client = createClient({
   url: '/api/graphql',
