@@ -30,6 +30,18 @@ input TodoWhereInput {
   label_not: String
   label_contains: String
   label_not_contains: String
+  label_starts_with: String
+  label_not_starts_with: String
+  label_ends_with: String
+  label_not_ends_with: String
+  label_i: String
+  label_not_i: String
+  label_contains_i: String
+  label_not_contains_i: String
+  label_starts_with_i: String
+  label_not_starts_with_i: String
+  label_ends_with_i: String
+  label_not_ends_with_i: String
   label_in: [String]
   label_not_in: [String]
   isComplete: Boolean
@@ -137,12 +149,36 @@ input UserWhereInput {
   name_not: String
   name_contains: String
   name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
   name_in: [String]
   name_not_in: [String]
   email: String
   email_not: String
   email_contains: String
   email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  email_i: String
+  email_not_i: String
+  email_contains_i: String
+  email_not_contains_i: String
+  email_starts_with_i: String
+  email_not_starts_with_i: String
+  email_ends_with_i: String
+  email_not_ends_with_i: String
   email_in: [String]
   email_not_in: [String]
   password_is_set: Boolean

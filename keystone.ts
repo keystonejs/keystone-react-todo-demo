@@ -11,7 +11,13 @@ const auth = createAuth({
 
 export default auth.withAuth(
   config({
-    db: { url: 'file:./app.db', provider: 'sqlite' },
+    db: {
+      url:
+        process.env.DATABASE_URL ||
+        `postgres://${process.env.USER}@localhost/keystone-todo-project`,
+      provider: 'postgresql',
+      useMigrations: true,
+    },
     ui: { isAccessAllowed: () => true },
     lists,
     session: statelessSessions({
