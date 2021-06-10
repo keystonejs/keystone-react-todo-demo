@@ -3,5 +3,6 @@ import { lists } from './schema';
 
 export default config({
   db: { url: 'file:./app.db', provider: 'sqlite' },
+  server: { cors: true },
   lists,
 });

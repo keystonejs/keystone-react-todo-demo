@@ -2,21 +2,10 @@ import 'tailwindcss/tailwind.css';
 import type { AppProps } from 'next/app';
 import { createClient, Provider } from 'urql';
 import { useQuery, gql } from 'urql';
-const client = createClient({
-  url: 'http://localhost:3000/graphql',
-});
 
-// useQuery({
-//   query: gql`
-//     query {
-//       allTodos {
-//         id
-//         name
-//         isComplete
-//       }
-//     }
-//   `,
-// });
+const client = createClient({
+  url: '/api/graphql',
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
