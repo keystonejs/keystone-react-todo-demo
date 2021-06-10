@@ -325,6 +325,9 @@ type Mutation {
     email: String!
     password: String!
   ): UserAuthenticationWithPasswordResult!
+  createInitialUser(
+    data: CreateInitialUserInput!
+  ): UserAuthenticationWithPasswordSuccess!
   endSession: Boolean!
 }
 
@@ -355,6 +358,12 @@ enum PasswordAuthErrorCode {
   SECRET_NOT_SET
   MULTIPLE_IDENTITY_MATCHES
   SECRET_MISMATCH
+}
+
+input CreateInitialUserInput {
+  name: String
+  email: String
+  password: String
 }
 
 type Query {

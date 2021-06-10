@@ -7,6 +7,11 @@ const auth = createAuth({
   identityField: 'email',
   secretField: 'password',
   listKey: 'User',
+  sessionData: 'id name isAdmin',
+  initFirstItem: {
+    fields: ['name', 'email', 'password'],
+    itemData: { isAdmin: true },
+  },
 });
 
 export default auth.withAuth(
@@ -18,7 +23,7 @@ export default auth.withAuth(
       provider: 'postgresql',
       useMigrations: true,
     },
-    ui: { isAccessAllowed: () => true },
+    ui: { isAccessAllowed: ({ session }) => !!session?.data?.isAdmin },
     lists,
     session: statelessSessions({
       secret: 'sadjnfsdhajfjiasdkjnasfnhqwiudwdnhiqwiufnwerihvbwhi',
