@@ -57,7 +57,7 @@ export function Button({
   };
   const classes = classNames(
     appearanceClasses[appearance],
-    'inline-flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2',
+    'inline-flex justify-center py-1 px-4 border border-transparent text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2',
     className
   );
   return (
