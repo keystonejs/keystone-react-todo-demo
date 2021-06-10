@@ -1,0 +1,35 @@
+{
+  "name": "keystone-react-todo-demo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "keystone-next postinstall",
+    "site:dev": "next dev -p 8000",
+    "site:build": "next build",
+    "site:start": "next start -p 8000",
+    "api:dev": "keystone-next dev",
+    "api:start": "keystone-next start",
+    "api:build": "keystone-next build"
+  },
+  "dependencies": {
+    "@keystone-next/fields": "^10.0.0",
+    "@keystone-next/keystone": "^19.0.0",
+    "graphql": "^15.5.0",
+    "next": "^10.2.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "urql": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/react": "17.0.10",
+    "autoprefixer": "^10.0.4",
+    "postcss": "^8.1.10",
+    "tailwindcss": "^2.1.1",
+    "typescript": "4.3.2"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "arrowParens": "avoid"
+  }
+}
