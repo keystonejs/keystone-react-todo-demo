@@ -9,7 +9,19 @@ generator client {
 }
 
 model Todo {
-  id         Int      @id @default(autoincrement())
-  label      String?
-  isComplete Boolean?
+  id           Int      @id @default(autoincrement())
+  label        String?
+  isComplete   Boolean?
+  assignedTo   User?    @relation("TodoassignedTo", fields: [assignedToId], references: [id])
+  assignedToId Int?     @map("assignedTo")
+
+  @@index([assignedToId])
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  name     String?
+  email    String? @unique
+  password String?
+  todos    Todo[]  @relation("TodoassignedTo")
 }
