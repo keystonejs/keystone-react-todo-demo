@@ -42,7 +42,7 @@ export function DeleteButton({
     className
   );
   return (
-    <button className={classes} title="Delete">
+    <button className={classes} title="Delete" {...props}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-4 w-4"
